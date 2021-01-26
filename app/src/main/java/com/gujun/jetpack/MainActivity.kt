@@ -2,7 +2,7 @@ package com.gujun.jetpack
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.gujun.jetpack.lifecycle.utils.CustomLifecycle
+import com.gujun.jetpack.lifecycle.CustomLifecycle
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

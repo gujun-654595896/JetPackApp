@@ -1,4 +1,4 @@
-package com.gujun.jetpack.lifecycle.utils
+package com.gujun.jetpack.lifecycle
 
 import android.util.Log
 import androidx.lifecycle.Lifecycle
