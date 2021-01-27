@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 /**
  *    author : gujun
  *    date   : 2021/1/26 17:15
- *    desc   :
+ *    desc   : LiveData管理类
  */
 class DataManager {
 

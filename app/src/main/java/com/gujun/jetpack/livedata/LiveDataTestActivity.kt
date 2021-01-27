@@ -24,9 +24,9 @@ class LiveDataTestActivity : AppCompatActivity() {
             Observer<String> { content.text = it })
 
         //一般LiveData也可使用在接口请求后通知页面更新数据
-        LiveDataViewModel.getInstance().getMutableLiveData().observe(this,
+        LiveDataRequestUtil.getInstance().getMutableLiveData().observe(this,
             Observer<String> { contentRequest.text = "我是接口返回的数据:$it" })
         //请求接口数据
-        LiveDataViewModel.getInstance().requestData()
+        LiveDataRequestUtil.getInstance().requestData()
     }
 }

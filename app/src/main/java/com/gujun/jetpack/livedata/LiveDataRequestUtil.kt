@@ -7,7 +7,7 @@ import androidx.lifecycle.MutableLiveData
  *    date   : 2021/1/27 13:39
  *    desc   : 请求数据的类，当请求到结果后通知页面更新
  */
-class LiveDataViewModel() {
+class LiveDataRequestUtil() {
 
     private var mutableLiveData: MutableLiveData<String>? = null
 
@@ -17,11 +17,11 @@ class LiveDataViewModel() {
 
     companion object {
 
-        private var liveDataViewModel: LiveDataViewModel? = null
+        private var liveDataViewModel: LiveDataRequestUtil? = null
 
-        fun getInstance(): LiveDataViewModel {
+        fun getInstance(): LiveDataRequestUtil {
             if (liveDataViewModel == null) {
-                liveDataViewModel = LiveDataViewModel()
+                liveDataViewModel = LiveDataRequestUtil()
             }
             return liveDataViewModel!!
         }
