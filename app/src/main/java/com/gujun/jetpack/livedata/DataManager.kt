@@ -11,7 +11,7 @@ class DataManager {
 
     private var mutableLiveData: MutableLiveData<String>? = null
 
-    constructor() {
+    init {
         mutableLiveData = MutableLiveData()
     }
 

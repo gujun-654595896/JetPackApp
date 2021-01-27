@@ -7,11 +7,11 @@ import androidx.lifecycle.MutableLiveData
  *    date   : 2021/1/27 13:39
  *    desc   : 请求数据的类，当请求到结果后通知页面更新
  */
-class LiveDataViewModel {
+class LiveDataViewModel() {
 
     private var mutableLiveData: MutableLiveData<String>? = null
 
-    constructor() {
+    init {
         mutableLiveData = MutableLiveData()
     }
 
