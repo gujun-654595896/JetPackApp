@@ -4,9 +4,12 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.gujun.jetpack.lifecycle.CustomLifecycle
 import com.gujun.jetpack.livedata.DataManager
 import com.gujun.jetpack.livedata.LiveDataTestActivity
+import com.gujun.jetpack.viewmodel.DataViewModel
+import com.gujun.jetpack.viewmodellivedata.DataViewModelLiveData
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -17,6 +20,10 @@ class MainActivity : AppCompatActivity() {
         lifecycleTest()
 
         liveDataTest()
+
+        viewModelTest()
+
+        viewModelLiveDataTest()
 
     }
 
@@ -37,4 +44,45 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, LiveDataTestActivity::class.java))
         }
     }
+
+    private fun viewModelTest() {
+        //ViewModel的使用，防止数据丢失，同意管理数据
+        val dataViewModel = ViewModelProvider(
+            this,
+            ViewModelProvider.NewInstanceFactory()
+        ).get(DataViewModel::class.java)
+
+        //即使页面旋转重新执行生命周期dataViewModel.number数据还是之前的
+        viewModelContent.text = "我是ViewModel变化后的数据: ${dataViewModel.number}"
+
+        changeViewModel.setOnClickListener {
+            dataViewModel.number = 200
+            //弊端：就是每次ViewModel改变数据后还得设置文本，所以进行优化使用LiveData,参考：viewmodellivedata
+            viewModelContent.text = "我是ViewModel变化后的数据: ${dataViewModel.number}"
+        }
+
+    }
+
+    private fun viewModelLiveDataTest() {
+        //获取ViewModel
+        val dataViewModelLiveData =
+            ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(
+                DataViewModelLiveData::class.java
+            )
+
+        //添加LiveData监听
+        dataViewModelLiveData.getLiveData().observe(this, Observer<Int> {
+            //监听数据统一修改视图
+            viewModelLiveDataContent.text =
+                "我是ViewModel变化后的数据: ${dataViewModelLiveData.getNumber()}"
+        })
+
+        changeViewModelLiveData.setOnClickListener {
+            //修改数据
+            dataViewModelLiveData.setNumber(300)
+        }
+
+    }
+
+
 }

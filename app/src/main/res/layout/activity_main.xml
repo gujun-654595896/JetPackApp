@@ -25,4 +25,40 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <Button
+        android:id="@+id/changeViewModel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="点击触发ViewModel改变"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/change" />
+
+    <TextView
+        android:id="@+id/viewModelContent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ViewModel的结果"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/changeViewModel" />
+
+    <Button
+        android:id="@+id/changeViewModelLiveData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="点击触发ViewModelLiveData改变"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewModelContent" />
+
+    <TextView
+        android:id="@+id/viewModelLiveDataContent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ViewModelLiveData的结果"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/changeViewModelLiveData" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
