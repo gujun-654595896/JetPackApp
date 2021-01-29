@@ -19,7 +19,7 @@ class LiveDataTestActivity : AppCompatActivity() {
 
         //LiveData 观察数据变化
         //在进入此页面前数据就触发了变化，进入此页面后还能监听到变化后的数据
-        //我觉得是在添加观察者后，会在被观察者中查看有没有对应的数据，如果有就直接回调当前的数据
+        //使用LivedData原始代码，数据是粘性的，也就是在调用observe监听前setValue了,但是当生命周期状态从不可见到可见后还是会回调observe监听
         DataManager.getInstance().getMutableLiveData().observe(this,
             Observer<String> { content.text = it })
 
