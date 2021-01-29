@@ -11,6 +11,7 @@ import com.gujun.jetpack.livedata.LiveDataTestActivity
 import com.gujun.jetpack.viewmodel.DataAndroidViewModel
 import com.gujun.jetpack.viewmodel.DataViewModel
 import com.gujun.jetpack.viewmodellivedata.DataViewModelLiveData
+import com.gujun.jetpack.viewmodellivedatadatabinding.DataBindingActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -26,6 +27,7 @@ class MainActivity : AppCompatActivity() {
 
         viewModelLiveDataTest()
 
+        viewModelLiveDataDataBindingTest()
     }
 
     private fun lifecycleTest() {
@@ -99,6 +101,10 @@ class MainActivity : AppCompatActivity() {
             dataViewModelLiveData.setNumber(300)
         }
 
+    }
+
+    private fun viewModelLiveDataDataBindingTest() {
+        startActivity(Intent(this, DataBindingActivity::class.java))
     }
 
 
