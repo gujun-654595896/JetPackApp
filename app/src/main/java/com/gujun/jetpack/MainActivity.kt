@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.gujun.jetpack.lifecycle.CustomLifecycle
 import com.gujun.jetpack.livedata.DataManager
 import com.gujun.jetpack.livedata.LiveDataTestActivity
+import com.gujun.jetpack.viewmodel.DataAndroidViewModel
 import com.gujun.jetpack.viewmodel.DataViewModel
 import com.gujun.jetpack.viewmodellivedata.DataViewModelLiveData
 import kotlinx.android.synthetic.main.activity_main.*
@@ -48,7 +49,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun viewModelTest() {
-        //ViewModel的使用，防止数据丢失，同意管理数据
+        //ViewModel的使用，防止数据丢失，同意管理数据,ViewModelProvider.NewInstanceFactory()只适合extends ViewModel
         val dataViewModel = ViewModelProvider(
             this,
             ViewModelProvider.NewInstanceFactory()
@@ -57,10 +58,24 @@ class MainActivity : AppCompatActivity() {
         //即使页面旋转重新执行生命周期dataViewModel.number数据还是之前的
         viewModelContent.text = "我是ViewModel变化后的数据: ${dataViewModel.number}"
 
+        //ViewModel的使用，防止数据丢失，同意管理数据,ViewModelProvider.AndroidViewModelFactory()只适合extends AndroidViewModel
+        val dataViewModelAndroid = ViewModelProvider(
+            this,
+            ViewModelProvider.AndroidViewModelFactory(application)
+        ).get(DataAndroidViewModel::class.java)
+
+        //即使页面旋转重新执行生命周期dataViewModel.number数据还是之前的
+        viewModelAndroidContent.text = "我是ViewModel变化后的数据: ${dataViewModelAndroid.number}"
+
         changeViewModel.setOnClickListener {
             dataViewModel.number = 200
             //弊端：就是每次ViewModel改变数据后还得设置文本，所以进行优化使用LiveData,参考：viewmodellivedata
             viewModelContent.text = "我是ViewModel变化后的数据: ${dataViewModel.number}"
+
+
+            dataViewModelAndroid.number = 300
+            //弊端：就是每次ViewModel改变数据后还得设置文本，所以进行优化使用LiveData,参考：viewmodellivedata
+            viewModelAndroidContent.text = "我是ViewModel变化后的数据: ${dataViewModelAndroid.number}"
         }
 
     }
