@@ -40,6 +40,8 @@ class MainActivity : AppCompatActivity() {
         change.setOnClickListener {
             //LiveData 触发数据变化
             DataManager.getInstance().getMutableLiveData().value = "我是LiveData变化后的数据"
+            //在子线程使用此方法，可以通知到主线程更新
+            //DataManager.getInstance().getMutableLiveData().postValue("我是子线程LiveData变化后的数据")
             //LiveData 在触发数据变化后跳转到下一个页面，看看下一个页面是否还能监听到
             startActivity(Intent(this, LiveDataTestActivity::class.java))
         }
