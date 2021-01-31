@@ -23,6 +23,7 @@ class DataBindingActivity : AppCompatActivity() {
 
         //databinding
         binding?.viewModel = viewModel
+        binding?.str = "添加文字"
         binding?.lifecycleOwner = this
     }
 }
