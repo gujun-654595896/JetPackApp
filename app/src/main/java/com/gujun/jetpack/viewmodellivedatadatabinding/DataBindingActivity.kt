@@ -10,11 +10,14 @@ import com.gujun.jetpack.viewmodellivedatadatabinding.viewmodel.DataBindingViewM
 
 class DataBindingActivity : AppCompatActivity() {
 
-    private var binding: ActivityDatabindingBinding? = null
+    private lateinit var binding: ActivityDatabindingBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_databinding)
+        //以下方式也可以
+//        binding = ActivityDatabindingBinding.inflate(layoutInflater)
+//        setContentView(binding.root)
 
         val viewModel = ViewModelProvider(
             this,
