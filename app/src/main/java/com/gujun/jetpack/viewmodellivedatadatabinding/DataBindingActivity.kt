@@ -24,6 +24,7 @@ class DataBindingActivity : AppCompatActivity() {
         //databinding
         binding?.viewModel = viewModel
         binding?.str = "添加文字"
+        //此处setLifecycleOwner是DataBinding观察LiveData的关键，否则得自己实现LiveData观察者再更新DataBinding
         binding?.lifecycleOwner = this
     }
 }
