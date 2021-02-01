@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.gujun.jetpack.lifecycle.CustomLifecycle
 import com.gujun.jetpack.livedata.DataManager
 import com.gujun.jetpack.livedata.LiveDataTestActivity
+import com.gujun.jetpack.room.RoomTestActivity
 import com.gujun.jetpack.viewmodel.DataAndroidViewModel
 import com.gujun.jetpack.viewmodel.DataViewModel
 import com.gujun.jetpack.viewmodellivedata.DataViewModelLiveData
@@ -28,6 +29,8 @@ class MainActivity : AppCompatActivity() {
         viewModelLiveDataTest()
 
         viewModelLiveDataDataBindingTest()
+
+        roomTest()
     }
 
     private fun lifecycleTest() {
@@ -104,8 +107,20 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun viewModelLiveDataDataBindingTest() {
-        startActivity(Intent(this, DataBindingActivity::class.java))
+        toDataBindingActivity.setOnClickListener {
+            startActivity(
+                Intent(
+                    this,
+                    DataBindingActivity::class.java
+                )
+            )
+        }
     }
 
+    private fun roomTest() {
+        toRoomPage.setOnClickListener {
+            startActivity(Intent(this, RoomTestActivity::class.java))
+        }
+    }
 
 }
