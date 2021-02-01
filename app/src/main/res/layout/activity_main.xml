@@ -88,4 +88,13 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toDataBindingActivity" />
 
+    <Button
+        android:id="@+id/toRoomLiveDataPage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="跳转RoomLiveData操作页面"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toRoomPage" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

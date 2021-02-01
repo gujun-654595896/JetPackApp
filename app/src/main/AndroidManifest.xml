@@ -20,6 +20,7 @@
         <activity android:name=".livedata.LiveDataTestActivity" />
         <activity android:name=".viewmodellivedatadatabinding.DataBindingActivity" />
         <activity android:name=".room.RoomTestActivity" />
+        <activity android:name=".viewmodellivedatadatabindingroom.RoomLiveDataTestActivity" />
     </application>
 
 </manifest>

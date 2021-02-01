@@ -13,6 +13,7 @@ import com.gujun.jetpack.viewmodel.DataAndroidViewModel
 import com.gujun.jetpack.viewmodel.DataViewModel
 import com.gujun.jetpack.viewmodellivedata.DataViewModelLiveData
 import com.gujun.jetpack.viewmodellivedatadatabinding.DataBindingActivity
+import com.gujun.jetpack.viewmodellivedatadatabindingroom.RoomLiveDataTestActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -31,6 +32,8 @@ class MainActivity : AppCompatActivity() {
         viewModelLiveDataDataBindingTest()
 
         roomTest()
+
+        roomLiveDataTest()
     }
 
     private fun lifecycleTest() {
@@ -120,6 +123,12 @@ class MainActivity : AppCompatActivity() {
     private fun roomTest() {
         toRoomPage.setOnClickListener {
             startActivity(Intent(this, RoomTestActivity::class.java))
+        }
+    }
+
+    private fun roomLiveDataTest() {
+        toRoomLiveDataPage.setOnClickListener {
+            startActivity(Intent(this, RoomLiveDataTestActivity::class.java))
         }
     }
 
