@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_test"
+    app:startDestination="@id/hostFragment">
+
+    <fragment
+        android:id="@+id/hostFragment"
+        android:name="com.gujun.jetpack.navigation.fragment.HostFragment"
+        android:label="HostFragment">
+        <action
+            android:id="@+id/action_hostFragment_to_oneFragment"
+            app:destination="@id/oneFragment" />
+        <action
+            android:id="@+id/action_hostFragment_to_twoFragment"
+            app:destination="@id/twoFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/oneFragment"
+        android:name="com.gujun.jetpack.navigation.fragment.OneFragment"
+        android:label="OneFragment" />
+
+    <fragment
+        android:id="@+id/twoFragment"
+        android:name="com.gujun.jetpack.navigation.fragment.TwoFragment"
+        android:label="TwoFragment" />
+</navigation>
