@@ -1,8 +1,7 @@
-package com.gujun.jetpack.viewmodellivedatadatabindingroom.entity
+package com.gujun.jetpack.viewmodellivedatadatabindingroom.db.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
-import androidx.room.Ignore
 import androidx.room.PrimaryKey
 
 /**

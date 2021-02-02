@@ -1,9 +1,8 @@
-package com.gujun.jetpack.viewmodellivedatadatabindingroom.dao
+package com.gujun.jetpack.viewmodellivedatadatabindingroom.db.dao
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.room.*
-import com.gujun.jetpack.viewmodellivedatadatabindingroom.entity.User
+import com.gujun.jetpack.viewmodellivedatadatabindingroom.db.entity.User
 
 /**
  *    author : gujun

@@ -1,11 +1,11 @@
-package com.gujun.jetpack.viewmodellivedatadatabindingroom.database
+package com.gujun.jetpack.viewmodellivedatadatabindingroom.db.database
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.gujun.jetpack.viewmodellivedatadatabindingroom.dao.UserDao
-import com.gujun.jetpack.viewmodellivedatadatabindingroom.entity.User
+import com.gujun.jetpack.viewmodellivedatadatabindingroom.db.dao.UserDao
+import com.gujun.jetpack.viewmodellivedatadatabindingroom.db.entity.User
 
 /**
  *    author : gujun

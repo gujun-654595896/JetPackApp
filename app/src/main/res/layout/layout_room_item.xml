@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.gujun.jetpack.viewmodellivedatadatabindingroom.db.entity.User" />
+
+        <variable
+            name="user"
+            type="User" />
+
+        <variable
+            name="onItemClickListener"
+            type="com.gujun.jetpack.viewmodellivedatadatabindingroom.adapter.base.DataBindingAdapter.OnItemViewClickListener&lt;User>" />
+
+    </data>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@{user.name}"
+        tools:text="test" />
+
+</layout>
