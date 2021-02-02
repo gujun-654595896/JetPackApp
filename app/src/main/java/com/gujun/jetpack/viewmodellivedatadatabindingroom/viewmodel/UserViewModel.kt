@@ -1,6 +1,8 @@
 package com.gujun.jetpack.viewmodellivedatadatabindingroom.viewmodel
 
 import android.app.Application
+import android.view.View
+import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -15,12 +17,20 @@ import com.gujun.jetpack.viewmodellivedatadatabindingroom.repository.UserReposit
  *    date   : 2021/2/1 16:04
  *    desc   : User数据加载逻辑类
  */
-class UserViewModel(var app: Application) : AndroidViewModel(app) {
+class UserViewModel(var app: Application) : AndroidViewModel(app),
+    DataBindingAdapter.OnItemViewClickListener<User> {
 
     private var userRepository: UserRepository = UserRepository(app)
 
     private val mAdapter by lazy {
-        DataBindingAdapter<User>(app, R.layout.layout_room_item, BR.user, BR.onItemClickListener)
+        DataBindingAdapter<User>(
+            app,
+            R.layout.layout_room_item,
+            BR.user,
+            BR.onItemClickListener
+        ).apply {
+            this.setOnItemViewClickListener(this@UserViewModel)
+        }
     }
 
     fun getAllUserLiveData2(): LiveData<List<User>> {
@@ -59,6 +69,10 @@ class UserViewModel(var app: Application) : AndroidViewModel(app) {
 
     fun getAdapter(): DataBindingAdapter<User> {
         return mAdapter
+    }
+
+    override fun onViewClick(v: View?, program: User) {
+        Toast.makeText(app, program.name, Toast.LENGTH_LONG).show()
     }
 
 }
