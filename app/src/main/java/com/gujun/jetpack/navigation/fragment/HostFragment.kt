@@ -28,10 +28,19 @@ class HostFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         toFragmentOne.setOnClickListener {
-            val bundle = Bundle()
-            bundle.putString("key", "我是HostFragment带过来的数据")
+            //方式一：通过Bundle
+//            val bundle = Bundle()
+//            bundle.putString("key", "我是HostFragment带过来的数据")
+//            NavHostFragment.findNavController(this)
+//                .navigate(R.id.action_hostFragment_to_oneFragment, bundle)
+
+            //方式二：通过SafeArgs
             NavHostFragment.findNavController(this)
-                .navigate(R.id.action_hostFragment_to_oneFragment, bundle)
+                .navigate(
+                    HostFragmentDirections.actionHostFragmentToOneFragment()
+                        .setKey("我是通过插件SafeArgs设置的数据")
+                )
+
         }
 
         toFragmentTwo.setOnClickListener {

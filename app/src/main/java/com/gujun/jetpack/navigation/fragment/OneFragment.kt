@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.navArgs
 import com.gujun.jetpack.R
 import com.gujun.jetpack.viewmodel.DataViewModel
 import kotlinx.android.synthetic.main.fragment_navigation_one.*
@@ -38,6 +39,11 @@ class OneFragment : Fragment() {
 
         //获取Bundle携带的参数
         bundleContent.text = arguments?.getString("key")
+
+        //获取SafeArgs插件传递的数据,SafeArgs也可以通过Bundle获取
+        val safeArgs: OneFragmentArgs by navArgs()
+        safeArgsContent.text = safeArgs.key
+
 
     }
 }

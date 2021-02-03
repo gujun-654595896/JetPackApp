@@ -26,6 +26,10 @@
         <action
             android:id="@+id/action_oneFragment_to_oneActivity"
             app:destination="@id/oneActivity" />
+        <argument
+            android:name="key"
+            app:argType="string"
+            android:defaultValue="test" />
     </fragment>
 
     <fragment
