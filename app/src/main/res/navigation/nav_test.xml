@@ -14,15 +14,26 @@
         <action
             android:id="@+id/action_hostFragment_to_twoFragment"
             app:destination="@id/twoFragment" />
+        <action
+            android:id="@+id/action_hostFragment_to_oneActivity"
+            app:destination="@id/oneActivity" />
     </fragment>
 
     <fragment
         android:id="@+id/oneFragment"
         android:name="com.gujun.jetpack.navigation.fragment.OneFragment"
-        android:label="OneFragment" />
+        android:label="OneFragment" >
+        <action
+            android:id="@+id/action_oneFragment_to_oneActivity"
+            app:destination="@id/oneActivity" />
+    </fragment>
 
     <fragment
         android:id="@+id/twoFragment"
         android:name="com.gujun.jetpack.navigation.fragment.TwoFragment"
         android:label="TwoFragment" />
+    <activity
+        android:id="@+id/oneActivity"
+        android:name="com.gujun.jetpack.navigation.OneActivity"
+        android:label="OneActivity" />
 </navigation>

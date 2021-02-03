@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.NavHostFragment
 import com.gujun.jetpack.R
 import kotlinx.android.synthetic.main.fragment_navigation_host.*
 
@@ -27,11 +28,19 @@ class HostFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         toFragmentOne.setOnClickListener {
-            Navigation.findNavController(view).navigate(R.id.action_hostFragment_to_oneFragment)
+            val bundle = Bundle()
+            bundle.putString("key", "我是HostFragment带过来的数据")
+            NavHostFragment.findNavController(this)
+                .navigate(R.id.action_hostFragment_to_oneFragment, bundle)
         }
 
         toFragmentTwo.setOnClickListener {
             Navigation.findNavController(view).navigate(R.id.action_hostFragment_to_twoFragment)
+        }
+
+        toActivityOne.setOnClickListener {
+            Navigation.findNavController(requireActivity(), R.id.nav_host_fragment)
+                .navigate(R.id.action_hostFragment_to_oneActivity)
         }
 
     }
