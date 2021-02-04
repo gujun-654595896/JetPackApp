@@ -13,10 +13,7 @@
             app:destination="@id/oneFragment" />
         <action
             android:id="@+id/action_hostFragment_to_twoFragment"
-            app:destination="@id/twoFragment"
-            app:popUpTo="@id/hostFragment"
-            app:popUpToInclusive="false"
-            app:launchSingleTop="true" />
+            app:destination="@id/twoFragment" />
         <action
             android:id="@+id/action_hostFragment_to_oneActivity"
             app:destination="@id/oneActivity" />
@@ -25,22 +22,33 @@
     <fragment
         android:id="@+id/oneFragment"
         android:name="com.gujun.jetpack.navigation.fragment.OneFragment"
-        android:label="OneFragment" >
+        android:label="OneFragment">
         <action
             android:id="@+id/action_oneFragment_to_oneActivity"
             app:destination="@id/oneActivity" />
         <argument
             android:name="key"
-            app:argType="string"
-            android:defaultValue="test" />
+            android:defaultValue="test"
+            app:argType="string" />
     </fragment>
 
     <fragment
         android:id="@+id/twoFragment"
         android:name="com.gujun.jetpack.navigation.fragment.TwoFragment"
-        android:label="TwoFragment" />
+        android:label="TwoFragment">
+        <action
+            android:id="@+id/action_twoFragment_to_threeFragment"
+            app:destination="@id/threeFragment"
+            app:popUpTo="@id/twoFragment"
+            app:launchSingleTop="true"
+            app:popUpToInclusive="true" />
+    </fragment>
     <activity
         android:id="@+id/oneActivity"
         android:name="com.gujun.jetpack.navigation.OneActivity"
         android:label="OneActivity" />
+    <fragment
+        android:id="@+id/threeFragment"
+        android:name="com.gujun.jetpack.navigation.fragment.ThreeFragment"
+        android:label="ThreeFragment" />
 </navigation>
