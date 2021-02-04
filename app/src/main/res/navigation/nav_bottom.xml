@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_bottom"
+    app:startDestination="@id/oneFragment2">
+
+    <fragment
+        android:id="@+id/oneFragment2"
+        android:name="com.gujun.jetpack.navigation.bottomnav.OneFragment"
+        android:label="OneFragmentName" />
+
+    <fragment
+        android:id="@+id/twoFragment2"
+        android:name="com.gujun.jetpack.navigation.bottomnav.TwoFragment"
+        android:label="TwoFragmentName" />
+
+</navigation>
