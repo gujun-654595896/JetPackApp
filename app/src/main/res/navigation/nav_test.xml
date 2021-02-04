@@ -13,7 +13,10 @@
             app:destination="@id/oneFragment" />
         <action
             android:id="@+id/action_hostFragment_to_twoFragment"
-            app:destination="@id/twoFragment" />
+            app:destination="@id/twoFragment"
+            app:popUpTo="@id/hostFragment"
+            app:popUpToInclusive="false"
+            app:launchSingleTop="true" />
         <action
             android:id="@+id/action_hostFragment_to_oneActivity"
             app:destination="@id/oneActivity" />
