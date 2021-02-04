@@ -1,15 +1,22 @@
 package com.gujun.jetpack.navigation.fragment
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.app.PendingIntent
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
 import com.gujun.jetpack.R
 import kotlinx.android.synthetic.main.fragment_navigation_host.*
+
 
 /**
  *    author : gujun
@@ -53,8 +60,60 @@ class HostFragment : Fragment() {
                 .navigate(R.id.action_hostFragment_to_oneActivity)
         }
 
-        toFragmentThree.setOnClickListener { NavHostFragment.findNavController(this)
-            .navigate(Uri.parse("three://com.gujun.test/123=")) }
+        toFragmentThree.setOnClickListener {
+            NavHostFragment.findNavController(this)
+                .navigate(Uri.parse("three://com.gujun.test/123="))
+        }
 
+        toFragmentThreePaddingIntent.setOnClickListener {
+            sendNotification()
+        }
+
+    }
+
+    private fun sendNotification() {
+        val channelId = "channel_test"
+        val notificationId = 100
+
+        if (activity == null) {
+            return
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val importance = NotificationManager.IMPORTANCE_DEFAULT
+            val channel =
+                NotificationChannel(channelId, "ChannelName", importance)
+            channel.description = "description"
+            val notificationManager =
+                requireActivity().getSystemService(
+                    NotificationManager::class.java
+                )
+            notificationManager.createNotificationChannel(channel)
+        }
+        val builder: NotificationCompat.Builder =
+            NotificationCompat.Builder(requireActivity(), channelId)
+                .setSmallIcon(R.drawable.ic_launcher_foreground)
+                .setContentTitle("DeepLink")
+                .setContentText("Hello World")
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                .setContentIntent(getPendingIntent())
+                .setAutoCancel(true)
+        val notificationManager =
+            NotificationManagerCompat.from(requireActivity())
+        notificationManager.notify(notificationId, builder.build())
+    }
+
+
+    private fun getPendingIntent(): PendingIntent? {
+        if (activity != null) {
+            val bundle = Bundle()
+            bundle.putString("path", "path From Notification")
+            return NavHostFragment.findNavController(this)
+                .createDeepLink()
+                .setGraph(R.navigation.nav_test)
+                .setDestination(R.id.threeFragment)
+                .setArguments(bundle)
+                .createPendingIntent()
+        }
+        return null
     }
 }
