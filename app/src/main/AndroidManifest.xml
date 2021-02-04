@@ -21,7 +21,9 @@
         <activity android:name=".viewmodellivedatadatabinding.DataBindingActivity" />
         <activity android:name=".room.RoomTestActivity" />
         <activity android:name=".viewmodellivedatadatabindingroom.RoomLiveDataTestActivity" />
-        <activity android:name=".navigation.NavigationHostActivity" />
+        <activity android:name=".navigation.NavigationHostActivity" >
+            <nav-graph android:value="@navigation/nav_test"/>
+        </activity>
         <activity android:name=".navigation.OneActivity" />
     </application>
 

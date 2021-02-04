@@ -1,5 +1,6 @@
 package com.gujun.jetpack.navigation.fragment
 
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -51,6 +52,9 @@ class HostFragment : Fragment() {
             Navigation.findNavController(requireActivity(), R.id.nav_host_fragment)
                 .navigate(R.id.action_hostFragment_to_oneActivity)
         }
+
+        toFragmentThree.setOnClickListener { NavHostFragment.findNavController(this)
+            .navigate(Uri.parse("three://com.gujun.test/123=")) }
 
     }
 }

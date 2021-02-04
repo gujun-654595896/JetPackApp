@@ -1,6 +1,7 @@
 package com.gujun.jetpack.navigation.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
 import com.gujun.jetpack.R
 import kotlinx.android.synthetic.main.fragment_navigation_three.*
+
 
 /**
  *    author : gujun
@@ -28,6 +30,13 @@ class ThreeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         back.setOnClickListener {
             NavHostFragment.findNavController(this).popBackStack()
+        }
+
+        //获取URI参数
+        val bundle = arguments
+        if (bundle != null) {
+            val path = bundle.getString("path")
+            Log.e("ThreeFragment", "onViewCreated: $path")
         }
     }
 }

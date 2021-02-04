@@ -17,6 +17,9 @@
         <action
             android:id="@+id/action_hostFragment_to_oneActivity"
             app:destination="@id/oneActivity" />
+        <action
+            android:id="@+id/action_hostFragment_to_threeFragment"
+            app:destination="@id/threeFragment" />
     </fragment>
 
     <fragment
@@ -50,5 +53,10 @@
     <fragment
         android:id="@+id/threeFragment"
         android:name="com.gujun.jetpack.navigation.fragment.ThreeFragment"
-        android:label="ThreeFragment" />
+        android:label="ThreeFragment">
+        <deepLink
+            android:id="@+id/deepLink"
+            android:autoVerify="true"
+            app:uri="three://com.gujun.test/{path}" />
+    </fragment>
 </navigation>
