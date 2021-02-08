@@ -18,7 +18,7 @@ class StudentPageKeyedDataSource : PageKeyedDataSource<Int, Student>() {
         callback: PageKeyedDataSource.LoadInitialCallback<Int, Student>
     ) {
         callback.onResult(
-            loadKeyData(startPageIndex, params.requestedLoadSize),
+            loadData(startPageIndex, params.requestedLoadSize),
             startPageIndex - 1,
             startPageIndex + 1
         )
@@ -28,14 +28,16 @@ class StudentPageKeyedDataSource : PageKeyedDataSource<Int, Student>() {
         params: PageKeyedDataSource.LoadParams<Int>,
         callback: PageKeyedDataSource.LoadCallback<Int, Student>
     ) {
-        callback.onResult(loadKeyData(params.key, params.requestedLoadSize), params.key + 1)
+        //params.key是当前要请求的key,callback.onResult中的adjacentPageKey是下一页需要的key
+        callback.onResult(loadData(params.key, params.requestedLoadSize), params.key + 1)
     }
 
     override fun loadBefore(
         params: PageKeyedDataSource.LoadParams<Int>,
         callback: PageKeyedDataSource.LoadCallback<Int, Student>
     ) {
-        callback.onResult(loadKeyData(params.key, params.requestedLoadSize), params.key - 1)
+        //params.key是当前要请求的key,callback.onResult中的adjacentPageKey是上一页需要的key
+        callback.onResult(loadData(params.key, params.requestedLoadSize), params.key - 1)
     }
 
     //加载数据的方法,按顺序加载数据,pageIndex：传进来的第几页，pageSize：传进来的每页数量
