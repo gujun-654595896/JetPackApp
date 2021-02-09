@@ -32,6 +32,8 @@
         <activity android:name=".paging.PositionalDataSourceActivity" />
         <activity android:name=".paging.PageKeyedDataSourceActivity" />
         <activity android:name=".paging.ItemKeyedDataSourceActivity" />
+        <activity android:name=".paging3.Paging3TestActivity" />
+        <activity android:name=".paging3.Paging3DataSourceActivity" />
     </application>
 
 </manifest>

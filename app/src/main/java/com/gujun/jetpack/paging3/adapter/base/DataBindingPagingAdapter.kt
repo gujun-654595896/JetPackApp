@@ -1,4 +1,4 @@
-package com.gujun.jetpack.paging.adapter.base
+package com.gujun.jetpack.paging3.adapter.base
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
-import androidx.paging.PagedListAdapter
+import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import com.gujun.jetpack.viewmodellivedatadatabindingroom.adapter.base.holder.DataBindingViewHolder
 
@@ -16,7 +16,7 @@ import com.gujun.jetpack.viewmodellivedatadatabindingroom.adapter.base.holder.Da
  *    desc   : databinding 关联Recycler的基类Adapter
  */
 class DataBindingPagingAdapter<T : Any>(diffCallback: DiffUtil.ItemCallback<T>) :
-    PagedListAdapter<T, DataBindingViewHolder>(diffCallback) {
+    PagingDataAdapter<T, DataBindingViewHolder>(diffCallback) {
     private var layoutId = 0
     private var itemBRId = 0
     private var clickListenerVariableId = 0

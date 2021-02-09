@@ -11,6 +11,7 @@ import com.gujun.jetpack.livedata.LiveDataTestActivity
 import com.gujun.jetpack.navigation.NavigationHostActivity
 import com.gujun.jetpack.navigation.bottomnav.BottomNavigationTestActivity
 import com.gujun.jetpack.paging.PagingTestActivity
+import com.gujun.jetpack.paging3.Paging3TestActivity
 import com.gujun.jetpack.room.RoomTestActivity
 import com.gujun.jetpack.viewmodel.DataAndroidViewModel
 import com.gujun.jetpack.viewmodel.DataViewModel
@@ -43,6 +44,8 @@ class MainActivity : AppCompatActivity() {
         navigationBottomTest()
 
         pagingTest()
+
+        paging3Test()
     }
 
     private fun lifecycleTest() {
@@ -156,6 +159,12 @@ class MainActivity : AppCompatActivity() {
     private fun pagingTest() {
         toPagingTestPage.setOnClickListener {
             startActivity(Intent(this, PagingTestActivity::class.java))
+        }
+    }
+
+    private fun paging3Test() {
+        toPagingTestPage3.setOnClickListener {
+            startActivity(Intent(this, Paging3TestActivity::class.java))
         }
     }
 
