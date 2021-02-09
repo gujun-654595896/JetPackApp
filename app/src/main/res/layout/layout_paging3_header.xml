@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="androidx.paging.LoadState" />
+
+        <variable
+            name="state"
+            type="LoadState" />
+
+        <variable
+            name="data"
+            type="String" />
+
+        <variable
+            name="onItemClickListener"
+            type="com.gujun.jetpack.paging3.adapter.base.DataBindingPagingAdapter.OnItemViewClickListener&lt;LoadState>" />
+
+    </data>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:gravity="center"
+        android:onClick="@{(v)->onItemClickListener.onViewClick(v,state)}"
+        android:text="@{data.toString()}"
+        tools:text="test" />
+
+</layout>

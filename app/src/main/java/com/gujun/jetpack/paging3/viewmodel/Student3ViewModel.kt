@@ -1,15 +1,19 @@
 package com.gujun.jetpack.paging3.viewmodel
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
+import androidx.paging.LoadState
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.cachedIn
+import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.DiffUtil
 import com.gujun.jetpack.BR
 import com.gujun.jetpack.R
+import com.gujun.jetpack.paging3.adapter.LoadStateHeaderAdapter
 import com.gujun.jetpack.paging3.adapter.base.DataBindingPagingAdapter
 import com.gujun.jetpack.paging3.datasource.Paging3DataSource
 import com.gujun.jetpack.paging3.db.entity.Student3
@@ -22,6 +26,7 @@ import com.gujun.jetpack.paging3.db.entity.Student3
 class Student3ViewModel(val app: Application) : AndroidViewModel(app) {
 
     private var adapter: DataBindingPagingAdapter<Student3>
+    private var concatAdapter: ConcatAdapter
 
     fun getData() = Pager(PagingConfig(20, 10, true, 20), initialKey = 0) {
         Paging3DataSource(app)
@@ -65,10 +70,40 @@ class Student3ViewModel(val app: Application) : AndroidViewModel(app) {
             BR.onItemClickListener,
             diffCallback
         )
+        adapter.addLoadStateListener {
+            when (it.append) {
+                is LoadState.Loading -> Log.e("refresh", "Loading")
+                is LoadState.NotLoading -> Log.e("refresh", "NotLoading")
+                is LoadState.Error -> Log.e("refresh", "Error")
+            }
+        }
+
+        //添加header/footer后一定要把返回的ConcatAdapter给RecyclerView
+        //注意不能分开设置两次，可以单独设置一次，否则之后最后一次生效
+        concatAdapter = adapter.withLoadStateHeaderAndFooter(
+            LoadStateHeaderAdapter<String>(
+                R.layout.layout_paging3_header,
+                BR.data,
+                BR.state,
+                0,
+                "默认"
+            ),
+            LoadStateHeaderAdapter<String>(
+                R.layout.layout_paging3_header,
+                BR.data,
+                BR.state,
+                0,
+                "默认"
+            )
+        )
     }
 
     fun getAdapter(): DataBindingPagingAdapter<Student3> {
         return adapter
+    }
+
+    fun getConcatAdapter(): ConcatAdapter {
+        return concatAdapter
     }
 
 }

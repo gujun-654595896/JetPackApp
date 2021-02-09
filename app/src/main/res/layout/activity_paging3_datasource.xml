@@ -19,7 +19,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:adapter="@{viewModel.adapter}"
+            app:adapter="@{viewModel.concatAdapter}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/layout_room_item" />
 
