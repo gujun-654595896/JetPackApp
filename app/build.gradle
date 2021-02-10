@@ -74,4 +74,8 @@ dependencies {
     def paging3_version = "3.0.0-alpha12"
     implementation "androidx.paging:paging-runtime:$paging3_version"
 
+    //JetPack的 WorkManager组件导入包
+    def work_version = "2.4.0"
+    implementation "androidx.work:work-runtime-ktx:$work_version"
+
 }

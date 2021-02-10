@@ -18,6 +18,7 @@ import com.gujun.jetpack.viewmodel.DataViewModel
 import com.gujun.jetpack.viewmodellivedata.DataViewModelLiveData
 import com.gujun.jetpack.viewmodellivedatadatabinding.DataBindingActivity
 import com.gujun.jetpack.viewmodellivedatadatabindingroom.RoomLiveDataTestActivity
+import com.gujun.jetpack.workmanager.WorkManagerTestActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -46,6 +47,8 @@ class MainActivity : AppCompatActivity() {
         pagingTest()
 
         paging3Test()
+
+        workManagerTest()
     }
 
     private fun lifecycleTest() {
@@ -165,6 +168,12 @@ class MainActivity : AppCompatActivity() {
     private fun paging3Test() {
         toPagingTestPage3.setOnClickListener {
             startActivity(Intent(this, Paging3TestActivity::class.java))
+        }
+    }
+
+    private fun workManagerTest() {
+        toWorkManager.setOnClickListener {
+            startActivity(Intent(this, WorkManagerTestActivity::class.java))
         }
     }
 
