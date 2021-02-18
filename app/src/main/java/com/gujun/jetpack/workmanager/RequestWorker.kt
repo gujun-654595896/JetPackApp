@@ -5,8 +5,6 @@ import android.util.Log
 import androidx.work.Worker
 import androidx.work.WorkerParameters
 import androidx.work.workDataOf
-import com.gujun.jetpack.room.DatabaseHelper
-import com.gujun.jetpack.room.Student
 
 /**
  *    author : gujun
@@ -36,16 +34,7 @@ class RequestWorker(val context: Context, parameters: WorkerParameters) :
 
     private fun requestData(): String {
         Thread.sleep(5000)
-        addMethod()
         return "请求成功"
     }
 
-    private fun addMethod() {
-
-        for (i in 0..100) {
-            val student = Student(sid = i.toLong(), name = "我是11$i", age = 10)
-            DatabaseHelper.getInstance(context).getStudentDao().addStudent(student)
-        }
-
-    }
 }
