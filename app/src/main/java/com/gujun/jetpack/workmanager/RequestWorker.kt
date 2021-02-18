@@ -16,8 +16,6 @@ import com.gujun.jetpack.room.Student
 class RequestWorker(val context: Context, parameters: WorkerParameters) :
     Worker(context, parameters) {
 
-    private var retryCount = 0
-
     override fun doWork(): Result {
         //此方法再子线程执行
 
@@ -28,11 +26,10 @@ class RequestWorker(val context: Context, parameters: WorkerParameters) :
 
         val result = requestData()
 
-        //重试策略
-        if (key2 == "4" && retryCount < 2) {
-            retryCount++
-            return Result.retry()
-        }
+//        //重试策略
+//        if (key2 == "4") {
+//            return Result.retry()
+//        }
         //请求成功，data是传递出去的值
         return Result.success(workDataOf("data" to result))
     }
