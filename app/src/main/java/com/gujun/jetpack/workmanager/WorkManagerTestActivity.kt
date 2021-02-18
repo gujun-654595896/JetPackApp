@@ -3,10 +3,8 @@ package com.gujun.jetpack.workmanager
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import androidx.work.Constraints
-import androidx.work.NetworkType
-import androidx.work.OneTimeWorkRequestBuilder
-import androidx.work.WorkManager
+import androidx.lifecycle.Observer
+import androidx.work.*
 import com.gujun.jetpack.R
 import kotlinx.android.synthetic.main.activity_work_manager_test.*
 
@@ -31,17 +29,32 @@ class WorkManagerTestActivity : AppCompatActivity() {
                 .build()
             //创建WorkRequest
             val workRequest =
-                OneTimeWorkRequestBuilder<RequestWorker>().setConstraints(constraints).build()
+                OneTimeWorkRequestBuilder<RequestWorker>()
+                    .setConstraints(constraints)
+                    .setInputData(workDataOf("key" to "12", "key2" to "13")).build()
             //执行异步任务
             WorkManager.getInstance(this@WorkManagerTestActivity).enqueue(workRequest)
             //添加任务执行结果监听
             WorkManager.getInstance(this@WorkManagerTestActivity)
                 .getWorkInfoByIdLiveData(workRequest.id).observe(this,
-                    androidx.lifecycle.Observer {
-                        Log.e(
-                            "WorkManagerTestActivity",
-                            "onCreate: ${it.outputData.getString("data")}"
-                        )
+                    Observer {
+                        when (it.state) {
+                            WorkInfo.State.SUCCEEDED -> Log.e(
+                                "WorkManagerTestActivity",
+                                "success: ${it.outputData.getString("data")}"
+                            )
+
+                            WorkInfo.State.RUNNING -> Log.e(
+                                "WorkManagerTestActivity",
+                                "running:"
+                            )
+
+                            else -> Log.e(
+                                "WorkManagerTestActivity",
+                                "state: ${it.state}"
+                            )
+                        }
+
                     })
 
         }

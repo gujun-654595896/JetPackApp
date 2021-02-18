@@ -2,9 +2,9 @@ package com.gujun.jetpack.workmanager
 
 import android.content.Context
 import android.util.Log
-import androidx.work.Data
 import androidx.work.Worker
 import androidx.work.WorkerParameters
+import androidx.work.workDataOf
 
 /**
  *    author : gujun
@@ -15,11 +15,16 @@ class RequestWorker(context: Context, parameters: WorkerParameters) : Worker(con
 
     override fun doWork(): Result {
         //此方法再子线程执行
+
+        //传递进来的参数
+        val key = inputData.getString("key")
+        val key2 = inputData.getString("key2")
+        Log.e("RequestWorker", "参数: key=$key , key2=$key2")
+
         val result = requestData()
 
-        //请求成功
-        Data.Builder().putString("data", result).build()
-        return Result.success()
+        //请求成功，data是传递出去的值
+        return Result.success(workDataOf("data" to result))
     }
 
     private fun requestData(): String {
