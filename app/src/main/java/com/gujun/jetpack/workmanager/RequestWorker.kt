@@ -1,17 +1,20 @@
 package com.gujun.jetpack.workmanager
 
 import android.content.Context
+import android.content.SharedPreferences
 import android.util.Log
 import androidx.work.Worker
 import androidx.work.WorkerParameters
 import androidx.work.workDataOf
+import com.gujun.jetpack.room.DatabaseHelper
+import com.gujun.jetpack.room.Student
 
 /**
  *    author : gujun
  *    date   : 2021/2/10 10:19
  *    desc   : Worker的实现类
  */
-class RequestWorker(context: Context, parameters: WorkerParameters) : Worker(context, parameters) {
+class RequestWorker(val context: Context, parameters: WorkerParameters) : Worker(context, parameters) {
 
     override fun doWork(): Result {
         //此方法再子线程执行
@@ -28,7 +31,17 @@ class RequestWorker(context: Context, parameters: WorkerParameters) : Worker(con
     }
 
     private fun requestData(): String {
-        Thread.sleep(5000)
+        Thread.sleep(20000)
+        addMethod()
         return "请求成功"
+    }
+
+    private fun addMethod() {
+
+        for (i in 0..100) {
+            val student = Student(sid = i.toLong(), name = "我是11$i", age = 10)
+            DatabaseHelper.getInstance(context).getStudentDao().addStudent(student)
+        }
+
     }
 }
