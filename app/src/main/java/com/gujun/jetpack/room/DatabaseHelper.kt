@@ -35,7 +35,7 @@ abstract class DatabaseHelper : RoomDatabase() {
                         DatabaseHelper::class.java,
                         "app_data.db" //数据库名称
                     ).allowMainThreadQueries() //允许操作数据库在主线程，如果不设置此方法，在主线程操作数据库会抛异常
-//                        .fallbackToDestructiveMigration()//数据库版本升级时调用的方法，当未匹配到版本的时候就会直接删除表然后重新创建,此时表为空
+                        .fallbackToDestructiveMigration()//数据库版本升级时调用的方法，当未匹配到版本的时候就会直接删除表然后重新创建,此时表为空
 //                        .fallbackToDestructiveMigrationOnDowngrade()//数据库版本降级时调用的方法，当未匹配到版本的时候就会直接删除表然后重新创建,此时表为空
 //                        .fallbackToDestructiveMigrationFrom(4)//特定的数据库版本，当未匹配到版本的时候就会直接删除表然后重新创建,此时表为空
                         .addMigrations(object :Migration(12,13){
