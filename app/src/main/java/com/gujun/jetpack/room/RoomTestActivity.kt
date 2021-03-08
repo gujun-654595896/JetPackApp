@@ -26,7 +26,8 @@ class RoomTestActivity : AppCompatActivity() {
     private fun addMethod() {
 
         for (i in 0..10) {
-            val student = Student(sid = i.toLong(), name = "我是$i", age = 10)
+            val student =
+                Student(sid = i.toLong(), name = "我是$i", age = 10)
             DatabaseHelper.getInstance(this).getStudentDao().addStudent(student)
         }
 
