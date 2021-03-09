@@ -43,6 +43,8 @@ abstract class DatabaseHelper : RoomDatabase() {
 //                        .fallbackToDestructiveMigrationOnDowngrade()//数据库版本降级时调用的方法，当未匹配到版本的时候就会直接删除表然后重新创建,此时表为空
 //                        .fallbackToDestructiveMigrationFrom(4)//特定的数据库版本，当未匹配到版本的时候就会直接删除表然后重新创建,此时表为空
                         .addMigrations(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4)
+                         //数据库回调,可以监听数据库的创建，数据库的打开，数据库被破坏性迁移
+                        .addCallback(DbCallback)
                         .build()
             }
             return instance as DatabaseHelper
@@ -64,6 +66,26 @@ abstract class DatabaseHelper : RoomDatabase() {
             override fun migrate(database: SupportSQLiteDatabase) {
                 database.execSQL("ALTER TABLE table_students ADD COLUMN address__ TEXT NOT NULL DEFAULT '123'")
             }
+        }
+    }
+
+    object DbCallback : RoomDatabase.Callback() {
+        override fun onCreate(db: SupportSQLiteDatabase) {
+            super.onCreate(db)
+            // Called when the database is created for the first time. This is called after all the tables are created.
+            // 在第一次创建数据库时调用。在创建所有表之后调用这个函数。
+        }
+
+        override fun onOpen(db: SupportSQLiteDatabase) {
+            super.onOpen(db)
+            // Called when the database has been opened.
+            // 当数据库被打开时调用
+        }
+
+        override fun onDestructiveMigration(db: SupportSQLiteDatabase) {
+            super.onDestructiveMigration(db)
+            // Called after the database was destructively migrated
+            // 在数据库被破坏性迁移后调用
         }
     }
 
