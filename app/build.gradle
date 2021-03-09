@@ -55,6 +55,8 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment-ktx:2.3.0'
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.0'
 
+    //liveData kotlin的扩展库
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0"
 
     //JetPack的 Room组件导入包
     def room_version = "2.2.3"

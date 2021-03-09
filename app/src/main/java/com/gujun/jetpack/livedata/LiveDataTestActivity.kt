@@ -28,5 +28,21 @@ class LiveDataTestActivity : AppCompatActivity() {
             Observer<String> { contentRequest.text = "我是接口返回的数据:$it" })
         //请求接口数据
         LiveDataRequestUtil.getInstance().requestData()
+
+        TestTransformation.getInstance()
+            .changeLiveDataMap(TestTransformation.getInstance().getOldLiveData()).observe(this,
+                Observer {
+                    contentChangeMap.text = it
+                })
+        TestTransformation.getInstance()
+            .changeLiveDataSwitchMap(TestTransformation.getInstance().getOldLiveData())
+            .observe(this,
+                Observer {
+                    contentChangeSwitchMap.text = it.toString()
+                })
+
+        change.setOnClickListener {
+            TestTransformation.getInstance().getOldLiveData().postValue("2")
+        }
     }
 }
