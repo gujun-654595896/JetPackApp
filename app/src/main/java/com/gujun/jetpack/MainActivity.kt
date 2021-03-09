@@ -13,6 +13,7 @@ import com.gujun.jetpack.navigation.bottomnav.BottomNavigationTestActivity
 import com.gujun.jetpack.paging.PagingTestActivity
 import com.gujun.jetpack.paging3.Paging3TestActivity
 import com.gujun.jetpack.room.RoomTestActivity
+import com.gujun.jetpack.roomviewmodellivedatacoroutine.RoomTestCoroutineActivity
 import com.gujun.jetpack.viewmodel.DataAndroidViewModel
 import com.gujun.jetpack.viewmodel.DataViewModel
 import com.gujun.jetpack.viewmodellivedata.DataViewModelLiveData
@@ -37,6 +38,8 @@ class MainActivity : AppCompatActivity() {
         viewModelLiveDataDataBindingTest()
 
         roomTest()
+
+        roomCoroutineTest()
 
         roomLiveDataTest()
 
@@ -140,6 +143,13 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, RoomTestActivity::class.java))
         }
     }
+
+    private fun roomCoroutineTest() {
+        toRoomCoroutinePage.setOnClickListener {
+            startActivity(Intent(this, RoomTestCoroutineActivity::class.java))
+        }
+    }
+
 
     private fun roomLiveDataTest() {
         toRoomLiveDataPage.setOnClickListener {

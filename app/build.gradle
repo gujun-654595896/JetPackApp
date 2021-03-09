@@ -59,6 +59,8 @@ dependencies {
     //JetPack的 Room组件导入包
     def room_version = "2.2.3"
     implementation "androidx.room:room-runtime:$room_version"
+    //如果room使用‘协程’相关的得加上此库
+    implementation "androidx.room:room-ktx:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
 
     //JetPack的 Navigation组件导入包

@@ -35,6 +35,7 @@
         <activity android:name=".paging3.Paging3TestActivity" />
         <activity android:name=".paging3.Paging3DataSourceActivity" />
         <activity android:name=".workmanager.WorkManagerTestActivity" />
+        <activity android:name=".roomviewmodellivedatacoroutine.RoomTestCoroutineActivity" />
     </application>
 
 </manifest>
