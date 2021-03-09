@@ -27,7 +27,7 @@ class RoomTestActivity : AppCompatActivity() {
 
         for (i in 0..10) {
             val student =
-                Student(sid = i.toLong(), name = "我是$i", age = 10)
+                Student(sid = i.toLong(), name = "我是$i", age = 10, address = "234", address_ = "2222",address__ = "4444")
             DatabaseHelper.getInstance(this).getStudentDao().addStudent(student)
         }
 
@@ -44,7 +44,7 @@ class RoomTestActivity : AppCompatActivity() {
     private fun queryMethod() {
         val stringBuilder = StringBuilder()
         DatabaseHelper.getInstance(this).getStudentDao().getAllStudent()
-            .forEach { stringBuilder.append(it.name).append("\n") }
+            .forEach { stringBuilder.append(it.name).append(",,").append(it.address).append(",,").append(it.address_).append(",,").append(it.address__).append("\n") }
         content.text = stringBuilder
     }
 }

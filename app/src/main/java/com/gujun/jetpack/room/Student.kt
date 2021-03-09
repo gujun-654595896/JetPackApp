@@ -25,6 +25,15 @@ data class Student(
 
     //ColumnInfo指定表中列的信息，defaultValue = "0"用来指定默认值
     @ColumnInfo(defaultValue = "0")
-    var age: Int
+    var age: Int,
+
+    @ColumnInfo(defaultValue = "123")
+    var address: String,
+
+    @ColumnInfo(defaultValue = "123")
+    var address_: String,
+
+    @ColumnInfo(defaultValue = "123")
+    var address__: String
 
 )
