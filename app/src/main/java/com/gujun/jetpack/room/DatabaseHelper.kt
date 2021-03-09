@@ -11,6 +11,10 @@ import androidx.sqlite.db.SupportSQLiteDatabase
  *    author : gujun
  *    date   : 2021/2/1 11:28
  *    desc   : 数据库生成类,抽象的
+ *
+ *    跨版本升级说明：
+ *      如果你的APP数据库版本是1，而最新的APP的数据库版本是4，那么在App升级时会顺序执行MIGRATION_1_2，MIGRATION_2_3，MIGRATION_3_4
+ *      如果你的APP数据库版本是2，而最新的APP的数据库版本是4，那么在App升级时会顺序执行MIGRATION_2_3，MIGRATION_3_4
  */
 
 //添加数据库注解,
